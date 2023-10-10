@@ -6,30 +6,30 @@ import javax.persistence.*;
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nameRole;
+    private Long id;
+    private String name;
 
     public Roles() {
     }
 
-    public Roles(Integer id, String nameRole) {
+    public Roles(Long id, String name) {
         this.id = id;
-        this.nameRole = nameRole;
+        this.name = name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNameRole() {
-        return nameRole;
+    public String getName() {
+        return name;
     }
 
-    public void setNameRole(String nameRole) {
-        this.nameRole = nameRole;
+    public void setName(String name) {
+        this.name = name;
     }
 }

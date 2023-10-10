@@ -1,6 +1,8 @@
 package com.example.act_non.customer.model;
 
-import com.example.act_non.user.model.Account;
+
+
+import com.example.act_non.user.model.Users;
 
 import javax.persistence.*;
 
@@ -15,19 +17,27 @@ public class Customer {
     private String email;
     private Boolean flagDeleted;
     @ManyToOne
-    private Account account;
+    private Users users;
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String phoneNumber, String address, String email, Boolean flagDeleted, Account account) {
+    public Customer(Long id, String name, String phoneNumber, String address, String email, Boolean flagDeleted, Users users) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
         this.flagDeleted = flagDeleted;
-        this.account = account;
+        this.users = users;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public Long getId() {
@@ -78,11 +88,4 @@ public class Customer {
         this.flagDeleted = flagDeleted;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 }
