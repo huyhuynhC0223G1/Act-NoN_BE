@@ -9,6 +9,7 @@ public class Users {
     private Long id;
     private String username;
     private String password;
+    private Boolean flagOnline;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
     joinColumns = {@JoinColumn(name = "users_id")},
@@ -18,10 +19,12 @@ public class Users {
     public Users() {
     }
 
-    public Users(Long id, String username, String password) {
+    public Users(Long id, String username, String password, Boolean flagOnline, Set<Roles> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.flagOnline = flagOnline;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -54,5 +57,13 @@ public class Users {
 
     public void setRoles(Set<Roles> roles) {
         this.roles = roles;
+    }
+
+    public Boolean getFlagOnline() {
+        return flagOnline;
+    }
+
+    public void setFlagOnline(Boolean flagOnline) {
+        this.flagOnline = flagOnline;
     }
 }

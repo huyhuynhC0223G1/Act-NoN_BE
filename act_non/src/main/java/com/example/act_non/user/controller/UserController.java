@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     /* ---------------- CREATE NEW USER ------------------------ */
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody Users user) {
         if (userService.add(user)) {
             return new ResponseEntity<>("Created!", HttpStatus.CREATED);
@@ -85,4 +86,5 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(userInfo.getId(), jwt,
                 userInfo.getUsername(), userInfo.getUsername(), userDetails.getAuthorities()));
     }
+
 }

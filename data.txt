@@ -1,0 +1,25 @@
+---** ProductType
+1,Combo,false
+2,Mark,false
+3,Gun,false
+4,Armor,false
+5,Glove,false
+6,Knee pads,false
+7,Elbow pads,false
+
+---** Product
+1,Green,false,https://tiimg.tistatic.com/fp/1/007/387/ready-play-paintball-equipment-package-kit-297.jpg,Pro 1,33.3,1
+2,Black,false,https://m.media-amazon.com/images/I/51LDn3CzMCL._AC_SY1000_.jpg,Pro 2,33.3,1
+3,Yelow,false,"https://m.media-amazon.com/images/I/61s6l77J98L._AC_UF1000,1000_QL80_.jpg",Pro 3,33.3,1
+4,White,false,https://eastcoastpaintball.com/cdn/shop/products/Frame788_1200x.png?v=1680489364,Pro 4,33.3,1
+5,Black,false,https://i.pinimg.com/474x/69/16/6b/69166b4dc8e8bddb3e78b2978dde0c3d.jpg,Pro 5,33.3,1
+6,White,false,https://cdn11.bigcommerce.com/s-utijnwwvdm/images/stencil/1280x1280/products/74320/233647/c214b6b3cce6f650f129e66960f11724da691a0cd5ad28eb29ac905fc8daa33f__65825.1687799681.jpg?c=1,Mark 1,33.3,2
+7,Green,false,https://cdn11.bigcommerce.com/s-i7rtxdhtek/images/stencil/1280x1280/products/86666/97612/JTFLEX8GREY-2__23438.1681478850.png?c=1,Mark 2,33.3,2
+8,Yelow,false,https://cdn11.bigcommerce.com/s-utijnwwvdm/images/stencil/1280x1280/products/103396/233648/990c08ded97a816232b39322734fa45727953d5e2a84e4e7de9a63968d0ceddf__01983.1687799697.jpg?c=1,Mark 3,33.3,2
+9,Black,false,https://i.redd.it/96df8i5tolsa1.jpg,Mark 4,33.3,2
+10,Green,false,https://i5.walmartimages.com/seo/JT-FLEX-8-Thermal-Paintball-Goggle-Mask_ee8ae8e1-d8db-4194-b717-f58ed247c5d3_1.305dabf30e12f27769c10d07ff982b9c.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF,Mark 5,33.3,2
+11,White,false,https://impactfull-9512.kxcdn.com/wp-content/uploads/2017/02/CRONUS-OD-2-min.jpg,Gun 1,33.3,3
+12,Black,false,https://www.scvillage.com/cdn/shop/files/IMG_4820.jpg?v=1685161334,Gun 2,33.3,3
+13,Green,false,https://eastcoastpaintball.com/cdn/shop/products/Tippmann_Sierra_One_Black_Paintball_Gun_Front_Oblique_View__73719_1200x1200_crop_center.jpg?v=1669895894,Gun 3,33.3,3
+14,White,false,https://i.ebayimg.com/images/g/7ioAAOSwQndgM1nn/s-l600.jpg,Gun 4,33.3,3
+15,Black,false,https://cdn11.bigcommerce.com/s-utijnwwvdm/images/stencil/1280x1280/products/93486/146925/TIPPMANNSIERRAONELRKIT-3__52839.1654632065.jpg?c=1,Gun 5,33.3,3

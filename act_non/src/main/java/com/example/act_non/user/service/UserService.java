@@ -1,7 +1,6 @@
 package com.example.act_non.user.service;
 
 
-import com.example.act_non.user.model.Roles;
 import com.example.act_non.user.model.UserPrinciple;
 import com.example.act_non.user.model.Users;
 import com.example.act_non.user.model.dto.UserDTO;
@@ -35,9 +34,12 @@ public class UserService implements UserDetailsService {
     }
 
     public Users findByUsername(String username) {
-        return iUserRepository.findByUsername(username);
+//        iUserRepository.updateUserIsOnline(username);
+        return iUserRepository.findByUsernameAndFlagOnlineIsFalse(username);
     }
-
+    public Boolean logout(String username) {
+       return iUserRepository.updateUserIsOffline(username) > 0;
+    }
     public boolean add(Users user) {
         String passwordEncode = passwordEncoder.encode(user.getPassword());
         user.setPassword(passwordEncode);
@@ -50,7 +52,7 @@ public class UserService implements UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String username) {
-        Users user = iUserRepository.findByUsername(username);
+        Users user = iUserRepository.findByUsernameAndFlagOnlineIsFalse(username);
         if (user != null) {
             return UserPrinciple.build(user);
         }
