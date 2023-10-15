@@ -16,4 +16,9 @@ public class ProductService implements IProductService {
     public Page<Product> findAllProduct(Pageable pageable, String name, String price, String typeName, String description) {
         return productRepository.findAllProduct(pageable, name, price, typeName, description);
     }
+
+    @Override
+    public Product getProductById(Integer id) {
+        return productRepository.getProductById(id);
+    }
 }

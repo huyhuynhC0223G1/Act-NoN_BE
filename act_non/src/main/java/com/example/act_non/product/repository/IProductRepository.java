@@ -32,4 +32,12 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
                                  @Param("price") String price,
                                  @Param("ptName") String typeName,
                                  @Param("description") String description);
+
+@Query(nativeQuery = true, value = "SELECT p.id, p.img, p.name, p.description,p.product_type_id,\n" +
+        "       p.price,p.flag_delete, pt.name\n" +
+        "        FROM product p\n" +
+        "                 JOIN product_type pt ON pt.id = p.product_type_id\n" +
+        "        WHERE p.flag_delete = false\n" +
+        "AND p.id = :id")
+Product getProductById(@Param("id") Integer id);
 }

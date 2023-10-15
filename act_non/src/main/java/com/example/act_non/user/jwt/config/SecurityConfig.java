@@ -72,7 +72,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/api/login",
                         "/api/home",
-                        "/api/product"
+                        "/api/product",
+                        "/api/product/**",
+                        "api/product/detail/**"
                         )
                 .permitAll()
                 .antMatchers(
@@ -80,8 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/customer/**"
                 )
                 .hasAnyAuthority("ADMIN")
-                .antMatchers("/api/home/**",
-                        "/api/product/detail")
+                .antMatchers("/api/home/**")
                 .hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
