@@ -1,4 +1,4 @@
-package com.example.act_non.cart.model;
+package com.example.act_non.order.model;
 
 import com.example.act_non.customer.model.Customer;
 import com.example.act_non.product.model.Product;
@@ -44,8 +44,8 @@ public class CartDetail {
         this.customer = customer;
     }
 
-    public Product getProduct() {
-        return product;
+    public Product getProduct(Product product) {
+        return this.product;
     }
 
     public void setProduct(Product product) {
@@ -67,4 +67,6 @@ public class CartDetail {
     public void setFlagDeleted(Boolean flagDeleted) {
         this.flagDeleted = flagDeleted;
     }
+
+
 }
