@@ -34,8 +34,7 @@ public class UserService implements UserDetailsService {
     }
 
     public Users findByUsername(String username) {
-//        iUserRepository.updateUserIsOnline(username);
-        return iUserRepository.findByUsernameAndFlagOnlineIsFalse(username);
+        return iUserRepository.findByUsernameAndFlagDeleteIsFalse(username);
     }
     public Boolean logout(String username) {
        return iUserRepository.updateUserIsOffline(username) > 0;
@@ -52,7 +51,7 @@ public class UserService implements UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String username) {
-        Users user = iUserRepository.findByUsernameAndFlagOnlineIsFalse(username);
+        Users user = iUserRepository.findByUsernameAndFlagDeleteIsFalse(username);
         if (user != null) {
             return UserPrinciple.build(user);
         }

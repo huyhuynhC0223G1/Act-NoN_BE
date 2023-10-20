@@ -16,28 +16,19 @@ public class Customer {
     private String address;
     private String email;
     private Boolean flagDeleted;
-    @ManyToOne
-    private Users users;
+
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String phoneNumber, String address, String email, Boolean flagDeleted, Users users) {
+    public Customer(Long id, String name, String phoneNumber, String address, String email, Boolean flagDeleted) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
         this.flagDeleted = flagDeleted;
-        this.users = users;
-    }
 
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
     }
 
     public Long getId() {

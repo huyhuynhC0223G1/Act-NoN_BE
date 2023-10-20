@@ -11,7 +11,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ICartDetailRepository extends JpaRepository<CartDetail, Long> {
-    List<CartDetail> findByCustomer(Customer customer);
+    @Query(nativeQuery = true, value = "SELECT * " +
+            "FROM cart_detail cd \n" +
+            "         JOIN product p ON p.id = cd.product_id \n" +
+            "         JOIN customer c ON c.id = cd.customer_id \n" +
+            "WHERE flag_delete = false AND cd.customer_id = :customer \n" +
+            "GROUP BY cd.id \n" +
+            "ORDER BY cd.id DESC")
+    List<CartDetail> findByCustomer(@Param("customer") Long customerId);
     CartDetail findByCustomerAndProduct(Customer customer, Product product);
     @Modifying
     @Query(nativeQuery = true, value = "UPDATE cart_detail\n" +

@@ -18,8 +18,10 @@ public class CartDetailService implements ICartDetailService {
     @Autowired
     private IProductRepository productRepository;
 
-    public List<CartDetail> cartDetailList(Customer customer) {
-        return cartDetailRepository.findByCustomer(customer);
+
+    @Override
+    public List<CartDetail> cartDetailList(Long customerId) {
+        return cartDetailRepository.findByCustomer(customerId);
     }
 
     @Override
@@ -33,8 +35,9 @@ public class CartDetailService implements ICartDetailService {
         } else {
             cartDetail = new CartDetail();
             cartDetail.setQuantity(quantity);
+            cartDetail.setFlagDeleted(false);
             cartDetail.setCustomer(customer);
-            cartDetail.getProduct(product);
+            cartDetail.setProduct(product);;
         }
         cartDetailRepository.save(cartDetail);
         return addedQuantity;

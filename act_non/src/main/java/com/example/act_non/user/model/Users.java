@@ -1,5 +1,7 @@
 package com.example.act_non.user.model;
 
+import com.example.act_non.customer.model.Customer;
+
 import javax.persistence.*;
 import java.util.Set;
 @Entity
@@ -9,21 +11,23 @@ public class Users {
     private Long id;
     private String username;
     private String password;
-    private Boolean flagOnline;
+    private Boolean flagDelete;
+    @OneToOne
+    private Customer customer;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
     joinColumns = {@JoinColumn(name = "users_id")},
     inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Roles> roles;
-
     public Users() {
     }
 
-    public Users(Long id, String username, String password, Boolean flagOnline, Set<Roles> roles) {
+    public Users(Long id, String username, String password, Boolean flagDelete, Customer customer, Set<Roles> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.flagOnline = flagOnline;
+        this.flagDelete = flagDelete;
+        this.customer = customer;
         this.roles = roles;
     }
 
@@ -59,11 +63,19 @@ public class Users {
         this.roles = roles;
     }
 
-    public Boolean getFlagOnline() {
-        return flagOnline;
+    public Boolean getFlagDelete() {
+        return flagDelete;
     }
 
-    public void setFlagOnline(Boolean flagOnline) {
-        this.flagOnline = flagOnline;
+    public void setFlagDelete(Boolean flagDelete) {
+        this.flagDelete = flagDelete;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

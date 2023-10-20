@@ -44,8 +44,8 @@ public class CartDetail {
         this.customer = customer;
     }
 
-    public Product getProduct(Product product) {
-        return this.product;
+    public Product getProduct() {
+        return product;
     }
 
     public void setProduct(Product product) {
@@ -67,6 +67,4 @@ public class CartDetail {
     public void setFlagDeleted(Boolean flagDeleted) {
         this.flagDeleted = flagDeleted;
     }
-
-
 }
