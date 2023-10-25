@@ -15,16 +15,22 @@ public class OrderDetail {
     private Orders orders;
     @ManyToOne
     private Product product;
+    private Boolean flagDelete;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(Long id, Double currentPrice, Long quantity, Orders orders, Product product) {
+    public OrderDetail(Long id, Double currentPrice, Long quantity, Orders orders, Product product, Boolean flagDelete) {
         this.id = id;
         this.currentPrice = currentPrice;
         this.quantity = quantity;
         this.orders = orders;
         this.product = product;
+        this.flagDelete = flagDelete;
+    }
+
+    public Boolean getFlagDelete() {
+        return flagDelete;
     }
 
     public Long getId() {

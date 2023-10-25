@@ -9,4 +9,6 @@ public interface ICartDetailService {
     List<CartDetail> cartDetailList(Long customerId);
     Long addQuantityCart(Long productId, Long quantity, Customer customer);
     Double updateQuantity(Long productId, Long quantity, Customer customer);
+    void deleteCartDetail(Long productId, Customer customerId );
+    int deleteCartDetailsById(Long cartId);
 }

@@ -49,4 +49,14 @@ public class CartDetailService implements ICartDetailService {
         Double subTotal = product.getPrice() * quantity;
         return subTotal;
     }
+
+    @Override
+    public void deleteCartDetail(Long productId, Customer customer) {
+      cartDetailRepository.deleteCartDetailById(productId, customer.getId());
+    }
+    @Override
+    public int deleteCartDetailsById(Long cartId) {
+        return cartDetailRepository.deleteCartDetailsById(cartId);
+    }
+
 }

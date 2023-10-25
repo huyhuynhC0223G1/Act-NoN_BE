@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public interface ICartDetailRepository extends JpaRepository<CartDetail, Long> {
     List<CartDetail> findByCustomer(@Param("customer") Long customerId);
     CartDetail findByCustomerAndProduct(Customer customer, Product product);
     @Modifying
+    @Transactional
     @Query(nativeQuery = true, value = "UPDATE cart_detail\n" +
             "set quantity = :quantity\n" +
             "where product_id = :productId\n" +
@@ -28,4 +30,19 @@ public interface ICartDetailRepository extends JpaRepository<CartDetail, Long> {
     void updateQuantity(@Param("quantity") Long quantity,
                               @Param("productId") Long productId,
                               @Param("customerId") Long customerId);
+
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value = "delete from cart_detail c\n" +
+            "       where c.customer_id = :customerId\n" +
+            "         and  c.product_id = :productId")
+    void deleteCartDetailById(@Param("productId") Long productId,
+                              @Param("customerId") Long customerId);
+
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value = "DELETE FROM cart_detail  where id = :cartId")
+    int deleteCartDetailsById(@Param("cartId") Long cartId);
+
+
 }

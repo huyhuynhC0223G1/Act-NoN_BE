@@ -3,29 +3,41 @@ package com.example.act_non.order.model;
 import com.example.act_non.customer.model.Customer;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
+@Table(name = "orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String dateCreated;
+    private LocalDateTime dateCreated;
     private String note;
+    private Double totalPrice;
     private Boolean flagDeleted;
+
     @ManyToOne
     private Customer customer;
 
     public Orders() {
     }
 
-
-    public Orders(Long id, String dateCreated, String note, Boolean flagDeleted, Customer customer) {
+    public Orders(Long id, LocalDateTime dateCreated, String note, Double totalPrice, Boolean flagDeleted, Customer customer) {
         this.id = id;
         this.dateCreated = dateCreated;
         this.note = note;
+        this.totalPrice = totalPrice;
         this.flagDeleted = flagDeleted;
         this.customer = customer;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {
@@ -36,11 +48,11 @@ public class Orders {
         this.id = id;
     }
 
-    public String getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
     }
 

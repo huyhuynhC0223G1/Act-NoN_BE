@@ -65,6 +65,34 @@ public class CartDetailController {
             return new ResponseEntity<>("You must login to add this product to your shopping cart.", HttpStatus.UNAUTHORIZED);
         }
         Double subTotal = cartDetailService.updateQuantity(productId, quantity, customer);
-        return new ResponseEntity<>(subTotal + " item(s) of this product were added to your shopping cart.", HttpStatus.CREATED);
+        return new ResponseEntity<>(subTotal , HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/delete/{productId}")
+    public ResponseEntity<?> deleteProductInCart(@PathVariable("productId") Long productId,
+                                              Authentication authentication) {
+        if (!authentication.isAuthenticated()) {
+            return new ResponseEntity<>("You must login to add this product to your shopping cart.", HttpStatus.UNAUTHORIZED);
+        }
+        String username = authentication.getName();
+        System.out.println(username);
+        // Thực hiện các thao tác thêm sản phẩm vào giỏ hàng
+        Customer customer = customerService.GetCurrentlyLoggedInCustomer(authentication);
+        System.out.println(customer);
+         cartDetailService.deleteCartDetail(productId, customer);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/delete-multi")
+    public ResponseEntity<?> clearSeveralProducts(@RequestBody List<Long> deletedCartIDs) {
+        System.out.println(deletedCartIDs);
+        if (!deletedCartIDs.isEmpty()) {
+            for (Long cartId : deletedCartIDs) {
+                cartDetailService.deleteCartDetailsById(cartId);
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }

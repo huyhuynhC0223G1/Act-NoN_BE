@@ -74,12 +74,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/home",
                         "/api/product",
                         "/api/product/**",
-                        "api/product/detail/**",
-                        "api/cartDetail",
-                        "api/cartDetail/**"
-//                        "api/cartDetail/add/**",
-//                        "api/cartDetail/add/{productId}",
-//                        "api/cartDetail/add/{productId}/**"
+                        "/api/cartDetail",
+                        "/api/cartDetail/**",
+                        "/api/orders",
+                        "/api/orders/**",
+                        "/api/orderDetail",
+                        "/api/orderDetail/**"
+
                         )
                 .permitAll()
                 .antMatchers(
