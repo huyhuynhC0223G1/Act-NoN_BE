@@ -12,10 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IUserRepository extends JpaRepository<Users, Long> {
 Users findByUsernameAndFlagDeleteIsFalse(String username);
 
-//    @Modifying
-//    @Transactional
-//    @Query(value = "update users set flag_online = 1 where username = :userName",nativeQuery = true)
-//    Integer updateUserIsOnline(@Param("userName") String userName);
     @Modifying
     @Transactional
     @Query(value = "update users set flag_online = 0 where username = :userName",nativeQuery = true)
