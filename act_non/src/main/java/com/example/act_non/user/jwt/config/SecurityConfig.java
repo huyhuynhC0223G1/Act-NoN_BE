@@ -73,22 +73,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/login",
                         "/api/home",
                         "/api/product",
-                        "/api/product/**",
+                        "/api/product/**"
+
+                        )
+                .permitAll()
+                .antMatchers(
+                        "/api/carts/detail"
+                )
+                .hasAnyAuthority("ADMIN")
+                .antMatchers("/api/home/**",
+                        "/api/customer/",
+                        "/api/customer/**",
                         "/api/cartDetail",
                         "/api/cartDetail/**",
                         "/api/orders",
                         "/api/orders/**",
                         "/api/orderDetail",
-                        "/api/orderDetail/**"
-
-                        )
-                .permitAll()
-                .antMatchers(
-                        "/api/carts/detail",
-                        "/api/customer/**"
-                )
-                .hasAnyAuthority("ADMIN")
-                .antMatchers("/api/home/**")
+                        "/api/orderDetail/**")
                 .hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
